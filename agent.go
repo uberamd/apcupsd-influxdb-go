@@ -121,6 +121,7 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/healthz", HealthHandler)
-	log.Fatal(http.ListenAndServe(":8084", r))
-	log.Print("Listening on :8084")
+	log.Printf("Listening on :%s", bc.HealthHttpPort)
+
+	log.Fatal(http.ListenAndServe(":" + bc.HealthHttpPort, r))
 }
